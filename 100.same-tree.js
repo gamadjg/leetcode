@@ -18,8 +18,23 @@
  * @param {TreeNode} q
  * @return {boolean}
  */
-var isSameTree = function(p, q) {
-    
+var isSameTree = function (p, q) {
+	// if both nodes are null
+	if (p === null && q === null) {
+		return true;
+	}
+	// p or q might be null, or they're both nodes
+	if (p === null) {
+		return false;
+	}
+	if (q === null) {
+		return false;
+	}
+	// both p and q were nodes, check vals and recusively check left and right nodes
+	return (
+		p.val === q.val &&
+		isSameTree(p.left, q.left) &&
+		isSameTree(p.right, q.right)
+	);
 };
 // @lc code=end
-
